@@ -20,6 +20,7 @@ import com.book.book_a.databinding.ItemMainList2Binding
 import com.book.book_a.model.News
 import com.book.book_a.model.NewsList
 import com.book.book_a.utils.DateTimeUtil
+import com.book.book_a.view.activity.MainTopDetailActivity
 import com.bumptech.glide.Glide
 import com.book.book_a.databinding.ItemMainList3Binding as ItemMainList3Binding
 
@@ -74,30 +75,41 @@ class HomeAllFragmentAdapter (var context: Context) : RecyclerView.Adapter<Recyc
         if (i == 0){
             (holder as OneViewHolder).binding.tvTitle.text = news?.title
             Glide.with(context).load(news?.imageUrl).into(holder.binding.ivTop)
+            holder.binding.rlTop.setOnClickListener {
+                MainTopDetailActivity().startActivity(context,news?.newsID)
+            }
         }else{
             if (mData.isNotEmpty()){
                 val p1= i -1
                 when(mData[p1].type){
                     0-> {
                         (holder as TwoViewHolder).binding.tvTitle.text = mData[p1].title
-                        holder.binding.tvTime.text =DateTimeUtil().getDateToString( mData[p1].publishTime, CustomCanstant.DF_YYYY_MM_DD_HH_MM)
+                        holder.binding.tvTime.text =DateTimeUtil().getDateToString( mData[p1].publishTime, CustomCanstant.DF_HH_MM)
                         holder.binding.tvCommentCount.text = "评论:"+mData[p1].commentCount.toString()
                         holder.binding.tvTitle2.text = mData[p1].title2
                         Glide.with(context).load(mData[p1].image).into(holder.binding.ivList)
+
+                        holder.binding.item.setOnClickListener {
+                            MainTopDetailActivity().startActivity(context,mData[p1].id)
+                        }
                     }
                     1->{
                         (holder as ThreeViewHolder).binding.tvTitle.text = mData[p1].title
                         holder.binding.recyclerIv.layoutManager = GridLayoutManager(context,3)
                         holder.binding.recyclerIv.adapter = HomeImageFragmentAdapter(context,mData[p1].images)
+                        holder.binding.item.setOnClickListener {
+                            MainTopDetailActivity().startActivity(context,mData[p1].id)
+                        }
                     }
                     else->{
                         (holder as FourViewHolder).binding.tvTitle.text = mData[p1].title
-                        holder.binding.tvTime.text =DateTimeUtil().getDateToString( mData[p1].publishTime,CustomCanstant.DF_YYYY_MM_DD_HH_MM)
+                        holder.binding.tvTime.text =DateTimeUtil().getDateToString( mData[p1].publishTime,CustomCanstant.DF_HH_MM)
                         holder.binding.tvCommentCount.text ="评论:"+mData[p1].commentCount.toString()
                         Glide.with(context).load(mData[p1].image).into(holder.binding.ivList)
                         holder.binding.tvTitle2.text = mData[p1].title2
-                        holder.binding.ivPlay.setOnClickListener {
 
+                        holder.binding.item.setOnClickListener {
+                            MainTopDetailActivity().startActivity(context,mData[p1].id)
                         }
                     }
                 }

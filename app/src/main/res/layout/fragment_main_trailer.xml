@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    
+        android:layout_height="wrap_content">
+        
         <View
             android:background="@color/common_blue"
             android:layout_width="match_parent"
             android:layout_height="15dp"/>
-    
+        
         <com.book.book_a.witgets.HeaderBar
             app:isShowBack="false"
-            app:titleText="排行"
+            app:titleText="预告"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         
         <com.jcodecraeer.xrecyclerview.XRecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent" />
-        
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    
+        </com.jcodecraeer.xrecyclerview.XRecyclerView>
     </LinearLayout>
 
+  
 </layout>

@@ -7,6 +7,16 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <View
+            android:background="@color/common_blue"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+    
+        <com.book.book_a.witgets.HeaderBar
+            app:isShowBack="false"
+            app:titleText="影评"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         
         <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:id="@+id/recycler"

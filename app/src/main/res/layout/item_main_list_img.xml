@@ -6,7 +6,8 @@
     <ImageView
         android:id="@+id/iv_img"
         android:scaleType="centerCrop"
-        android:background="@color/color_999999"
+        android:padding="5dp"
+        android:background="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

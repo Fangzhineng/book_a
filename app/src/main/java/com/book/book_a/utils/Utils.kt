@@ -17,6 +17,10 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.text.DecimalFormat
 import java.util.HashMap
+import android.media.MediaMetadataRetriever
+import android.graphics.Bitmap
+
+
 
 class Utils {
 
@@ -247,5 +251,23 @@ class Utils {
             window.statusBarColor = Color.TRANSPARENT
         }
 
+    }
+
+
+    fun getNetVideoBitmap(videoUrl: String): Bitmap? {
+        var bitmap: Bitmap? = null
+
+        val retriever = MediaMetadataRetriever()
+        try {
+            //根据url获取缩略图
+            retriever.setDataSource(videoUrl, HashMap())
+            //获得第一帧图片
+            bitmap = retriever.frameAtTime
+        } catch (e: IllegalArgumentException) {
+            e.printStackTrace()
+        } finally {
+            retriever.release()
+        }
+        return bitmap
     }
 }

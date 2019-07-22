@@ -86,6 +86,20 @@ class RequestParams {
         okhttp.getGo(url, callBack, flag)
     }
 
+    fun ReviewDetailData(callBack: ResultCallBack,id:Int,flag: Int){
+        val url = ServerConstants.Review_detail+"?reviewId=$id"
+        okhttp.getGo(url, callBack, flag)
+    }
 
 
+
+    fun TrailerData(callBack: ResultCallBack,flag: Int){
+        val url = ServerConstants.prevue
+        okhttp.getGo(url, callBack, flag)
+    }
+
+    fun MianTopDetailData(callBack: ResultCallBack,id:Int,flag: Int){
+        val url = ServerConstants.main_list_detail+"?newsId=$id"
+        okhttp.getGo(url, callBack, flag)
+    }
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<RelativeLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent">
+		
+		
+		<RelativeLayout
+			android:id="@+id/rl_top"
+			android:layout_width="match_parent"
+			android:layout_height="200dp">
+			
+			
+			<ImageView
+				android:id="@+id/iv_top"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:scaleType="centerCrop" />
+			
+			
+			<ImageView
+				android:id="@+id/iv_play"
+				android:layout_width="80dp"
+				android:layout_height="80dp"
+				android:padding="15dp"
+				android:layout_centerInParent="true"
+				android:src="@mipmap/viceoplay" />
+			
+		</RelativeLayout>
+		
+		<TextView
+			android:id="@+id/tv_title"
+			android:padding="@dimen/dp_10"
+			android:textColor="@color/colorWhite"
+			android:background="@color/color_E4575656"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+		
+		
+		<TextView
+			android:id="@+id/tv_type"
+			android:layout_below="@+id/rl_top"
+			android:textSize="13sp"
+			android:padding="@dimen/dp_10"
+			android:textColor="@color/common_yellow"
+			android:layout_alignParentRight="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+		
+		<View
+			android:layout_below="@+id/tv_type"
+			android:layout_marginTop="@dimen/dp_10"
+			android:background="@color/color_fint"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"/>
+	</RelativeLayout>
+
+</layout>

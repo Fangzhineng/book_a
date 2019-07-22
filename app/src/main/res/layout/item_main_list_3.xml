@@ -1,38 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
-
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	xmlns:app="http://schemas.android.com/apk/res-auto">
-	<RelativeLayout
-	app:layout_constraintTop_toTopOf="parent"
-	android:id="@+id/rl_top"
-	android:layout_width="match_parent"
-	android:layout_height="250dp">
 	
 	
-	<ImageView
-	android:id="@+id/iv_top"
-	android:scaleType="centerCrop"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent" />
+	<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/item"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		
+		<RelativeLayout
+			android:id="@+id/rl_top"
+			android:layout_width="match_parent"
+			android:layout_height="250dp"
+			app:layout_constraintTop_toTopOf="parent">
+			
+			
+			<ImageView
+				android:id="@+id/iv_top"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:scaleType="centerCrop" />
+			
+			<TextView
+				android:id="@+id/tv_title"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:background="@color/color_E4575656"
+				android:gravity="center"
+				android:paddingTop="10dp"
+				android:paddingBottom="10dp"
+				android:textColor="@color/common_white"
+				android:textSize="18sp"
+				android:textStyle="bold" />
+			
+			
+			<ImageView
+				android:id="@+id/iv_play"
+				android:visibility="gone"
+				android:layout_centerInParent="true"
+				android:src="@mipmap/viceoplay"
+				android:layout_width="50dp"
+				android:layout_height="50dp" />
+		</RelativeLayout>
 	
-	<TextView
-	android:id="@+id/tv_title"
-	android:gravity="center"
-	android:textColor="@color/common_white"
-	android:textSize="18sp"
-	android:textStyle="bold"
-	android:background="@color/color_E4575656"
-	android:paddingTop="10dp"
-	android:paddingBottom="10dp"
-	android:layout_alignParentBottom="true"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content" />
-	</RelativeLayout>
-
-
-</android.support.constraint.ConstraintLayout>
+	
+	</android.support.constraint.ConstraintLayout>
 </layout>

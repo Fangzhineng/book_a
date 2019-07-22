@@ -127,16 +127,22 @@ class MainNavigateTabBar @JvmOverloads constructor(context: Context, attrs: Attr
         }
 
         if (tabParam.iconResId > 0 && tabParam.iconSelectedResId > 0) {
-            view.setTag(holder)
+            view.tag = holder
             view.setOnClickListener(this)
             mViewHolderList.add(holder)
         }
         if (tabParam.iconResId == -1 && tabParam.iconSelectedResId == -1) {
-            view.setTag(holder)
+            view.tag = holder
             view.setOnClickListener(this)
             mViewHolderList.add(holder)
         }
-
+        if (tabParam.iconResId == -2 && tabParam.iconSelectedResId == -2) {
+            view.tag = holder
+            holder.tabIcon!!.visibility = View.GONE
+            holder.tabTitle!!.textSize = 16f
+            view.setOnClickListener(this)
+            mViewHolderList.add(holder)
+        }
         addView(view, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f))
 
     }

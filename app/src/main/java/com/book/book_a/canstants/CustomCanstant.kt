@@ -3,10 +3,10 @@ package com.book.book_a.canstants
 class CustomCanstant {
     companion object {
         val TAG_PAGE_HOME = "首页"
-        val TAG_PAGE_CITY = "同城"
+        val TAG_PAGE_CITY = "排行"
         val TAG_PAGE_PUBLISH = "发布"
-        val TAG_PAGE_MESSAGE = "消息"
-        val TAG_PAGE_PERSON = "我的"
+        val TAG_PAGE_MESSAGE = "预告"
+        val TAG_PAGE_PERSON = "影评"
 
         val COOKIE =  "cookie"
 

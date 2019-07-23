@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.book.book_a.R
 import com.book.book_a.databinding.ItemGridTopBinding
+import com.book.book_a.view.activity.KingDetailActivity
+import com.book.book_a.view.activity.KingDetailTwoActivity
 
 class kingTopAdapter(val context: Context) : RecyclerView.Adapter<kingTopAdapter.ViewHolder>() {
 
@@ -30,6 +32,21 @@ class kingTopAdapter(val context: Context) : RecyclerView.Adapter<kingTopAdapter
     override fun onBindViewHolder(holder: kingTopAdapter.ViewHolder, p1: Int) {
         holder.binding.tvTop.text = titles[p1]
         holder.binding.ivIcon.setImageResource(tops[p1])
+
+        holder.binding.item.setOnClickListener {
+            when(p1){
+                0 ->{
+                    KingDetailActivity().startActivity(context,"1",2065)
+                }
+                1->{
+                    KingDetailActivity().startActivity(context,"1",2066)
+                }
+                else->{
+                    KingDetailTwoActivity().startActivity(context)
+                }
+            }
+        }
+
     }
 
 

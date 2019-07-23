@@ -17,6 +17,7 @@ import com.book.book_a.databinding.ItemMainList3Binding
 import com.book.book_a.model.News
 import com.book.book_a.model.TopList
 import com.book.book_a.model.TopLists
+import com.book.book_a.view.activity.KingDetailActivity
 import com.bumptech.glide.Glide
 
 class KingFragmentAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -69,6 +70,9 @@ class KingFragmentAdapter(val context: Context) : RecyclerView.Adapter<RecyclerV
                 if (news != null) {
                     (holder as OneViewHodler).binding.tvTitle.text = news!!.title
                     Glide.with(context).load(news!!.imageUrl).into(holder.binding.ivTop)
+                    holder.binding.item.setOnClickListener {
+                        KingDetailActivity().startActivity(context,"2",news!!.id)
+                    }
                 }
             }
             1 -> {
@@ -79,6 +83,10 @@ class KingFragmentAdapter(val context: Context) : RecyclerView.Adapter<RecyclerV
                 val position = i -2
                 (holder as ThreeViewHodler).binding.tvTitle.text = list[position].topListNameCn
                 holder.binding.tvTitle2.text = list[position].summary
+
+                holder.binding.item.setOnClickListener {
+                    KingDetailActivity().startActivity(context,"2", list[position].id)
+                }
             }
         }
 

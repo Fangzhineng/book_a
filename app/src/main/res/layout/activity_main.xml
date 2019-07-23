@@ -20,7 +20,7 @@
                 android:layout_alignParentBottom="true"
                 android:background="@android:color/white"
                 app:containerId="@+id/main_container"
-                app:navigateTabSelectedTextColor="@color/common_yellow"
+                app:navigateTabSelectedTextColor="@color/common_blue"
                 app:navigateTabTextColor="@color/comui_tab_text_color" />
 
         <!--<ImageView-->

@@ -24,11 +24,12 @@ class ViewUtils {
       HtmlText.from(taskVariablesLocal).setImageLoader(object : HtmlImageLoader {
                  override fun loadImage(url: String, callback: HtmlImageLoader.Callback) {
                     Glide.with(context)
+                            .asBitmap()
                             .load(url)
-                            .into(object : SimpleTarget<Drawable>(){
-                               override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
-                                   callback.onLoadComplete(BitmapUtils.BitmapUtil.getBtimapUtil(context).drawableToBitmap(resource))
-                               }
+                            .into(object : SimpleTarget<Bitmap>(){
+                                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                                    callback.onLoadComplete(resource)
+                                }
                             })
                  }
 
@@ -65,7 +66,7 @@ class ViewUtils {
    }
 
 
-   fun jupActivity(context:Context,position: Int, list: List<String>) {
+   fun jupActivity(context:Context,position: Int, list: List<String>?) {
       // 图片查看器
       val picture = PictureConfig.Builder()
               .setListData(list as ArrayList<String>)

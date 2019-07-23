@@ -37,6 +37,9 @@ class MainHomeFragment : BaseFragment<FragmentMainHomeBinding>() {
 
         userVisibleHint = true
 
+        binding.recyclerView.isFocusableInTouchMode = false //设置不需要焦点
+        binding.recyclerView.requestFocus()//
+
         binding.recyclerView.setLoadingListener(object :XRecyclerView.LoadingListener{
             override fun onLoadMore() {
                 page++

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<LinearLayout
+		android:orientation="vertical"
+		android:background="@color/common_white"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		<View
+			android:background="@color/common_blue"
+			android:layout_width="match_parent"
+			android:layout_height="15dp"/>
+		
+		<com.book.book_a.witgets.HeaderBar
+			android:id="@+id/header_bar"
+			app:titleText="详情"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"/>
+		
+		<!--<android.support.design.widget.TabLayout-->
+			<!--android:id="@+id/tl_main"-->
+			<!--android:layout_width="wrap_content"-->
+			<!--android:layout_height="40dp"-->
+			<!--android:textSize="15sp"-->
+			<!--app:tabIndicatorColor="@color/colorPrimaryDark"-->
+			<!--app:tabSelectedTextColor="@color/colorPrimaryDark"-->
+			<!--app:tabIndicatorHeight="3dp"-->
+			<!--app:tabTextColor="@color/color_333333"-->
+			<!--app:tabMode="scrollable" />-->
+		<android.support.design.widget.TabLayout
+			android:id="@+id/tl_main"
+			android:background="@color/common_white"
+			android:layout_width="wrap_content"
+			app:tabIndicatorColor="@color/colorPrimaryDark"
+			app:tabIndicatorHeight="3dp"
+			app:tabSelectedTextColor="@color/colorPrimaryDark"
+			app:tabTextColor="@android:color/black"
+			android:layout_height="?attr/actionBarSize"
+			app:tabMode="scrollable" />
+		
+		<android.support.v4.view.ViewPager
+			android:id="@+id/view_page"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+		
+	
+	</LinearLayout>
+
+</layout>

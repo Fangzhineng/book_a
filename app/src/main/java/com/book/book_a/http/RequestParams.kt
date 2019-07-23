@@ -102,4 +102,24 @@ class RequestParams {
         val url = ServerConstants.main_list_detail+"?newsId=$id"
         okhttp.getGo(url, callBack, flag)
     }
+
+    //pageIndex=1&type=2&toplistId=1474&pageSubAreaID=1474
+    fun KingDetailData(callBack: ResultCallBack,page:Int,type:String,id:Int,flag: Int){
+        val url = when(type){
+            "1"->{
+                ServerConstants.King_list_detial_top+"?pageIndex=$page&type=$type&toplistId=$id&pageSubAreaID=$id"
+            }
+            else->{
+                ServerConstants.King_list_detial+"?pageIndex=$page&type=$type&toplistId=$id&pageSubAreaID=$id"
+            }
+        }
+        okhttp.getGo(url, callBack, flag)
+    }
+
+
+    //movieId=91850&locationId=290&t=201971813585181003
+    fun KingDetailTwoData(callBack: ResultCallBack,id:Int,locationId:Int,flag: Int){
+        val url = ServerConstants.King_list_detial_two+"?movieId=$id&locationId=$locationId"
+        okhttp.getGo(url, callBack, flag)
+    }
 }

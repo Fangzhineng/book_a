@@ -17,6 +17,7 @@ import com.book.book_a.R
 import com.book.book_a.http.HttpRunnable
 import com.book.book_a.dialog.UpdateDialog
 import com.book.book_a.model.ResultBean
+import com.book.book_a.utils.StatusBarUtil
 import com.book.book_a.view.activity.WebActivity
 import com.google.gson.Gson
 
@@ -73,17 +74,19 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        //状态栏透明和间距处理
+        StatusBarUtil.immersive(window)
 
         params["app_id"] = "130001"
 
         //先测试
-        jumpMain()
+        //jumpMain()
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            checkAndRequestPermission()
-//        } else {
-//            Thread(runnable).start()
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            checkAndRequestPermission()
+        } else {
+            Thread(runnable).start()
+        }
 
 
     }

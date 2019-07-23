@@ -13,6 +13,9 @@ import com.book.book_a.utils.ViewUtils
 import com.book.book_a.witgets.GlideImageLoader
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
+import com.zzhoujay.richtext.RichText
+import com.zzhoujay.richtext.RichType
+import com.zzhoujay.richtext.callback.OnImageClickListener
 
 class MainTopDetailAdapter(val context:Context) : RecyclerView.Adapter<MainTopDetailAdapter.ViewHolder>() {
 
@@ -35,7 +38,7 @@ class MainTopDetailAdapter(val context:Context) : RecyclerView.Adapter<MainTopDe
         return  1
     }
 
-    override fun onBindViewHolder(holder: MainTopDetailAdapter.ViewHolder, p1: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
         if (bean != null) {
             holder.binding.tvTitle.text = bean?.title
             holder.binding.tvTime.text = bean?.time
@@ -43,6 +46,12 @@ class MainTopDetailAdapter(val context:Context) : RecyclerView.Adapter<MainTopDe
             holder.binding.tvComment.text = "评论:" + bean?.commentCount
             if (bean?.content!!.isNotEmpty()) {
                 ViewUtils().fromText(context, bean?.content!!, holder.binding.tvContent)
+//                RichText.from(bean?.content!!).type(RichType.html).clickable(true) // 是否可点击，默认只有设置了点击监听才可点击
+//                        .imageClick(object :OnImageClickListener{
+//                            override fun imageClicked(imageUrls: List<String>?, position: Int) {
+//                                ViewUtils().jupActivity(context,position,imageUrls)
+//                            }
+//                        }).into(holder.binding.tvContent)
             }
 
             if (bean?.images != null){

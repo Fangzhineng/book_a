@@ -3,7 +3,6 @@ package com.book.book_a.view.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.databinding.DataBindingUtil
-import android.support.design.shape.RoundedCornerTreatment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -23,7 +22,6 @@ import com.book.book_a.model.NewsList
 import com.book.book_a.utils.DateTimeUtil
 import com.book.book_a.view.activity.MainTopDetailActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.book.book_a.databinding.ItemMainList3Binding as ItemMainList3Binding
 
 class HomeAllFragmentAdapter (var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

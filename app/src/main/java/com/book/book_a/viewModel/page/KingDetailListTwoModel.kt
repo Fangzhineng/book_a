@@ -6,7 +6,6 @@ import com.book.book_a.http.RequestParams
 import com.book.book_a.http.ResultCallBack
 import com.book.book_a.model.KingDeatilBean
 import com.book.book_a.viewModel.BaseViewModel
-import com.bumptech.glide.Glide.init
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.io.IOException

@@ -5,7 +5,6 @@ import android.arch.lifecycle.MutableLiveData
 import com.book.book_a.http.RequestParams
 import com.book.book_a.http.ResultCallBack
 import com.book.book_a.model.KingBean
-import com.book.book_a.model.MainListBean
 import com.book.book_a.model.TopBean
 import com.book.book_a.model.TopLists
 import com.book.book_a.viewModel.BaseViewModel

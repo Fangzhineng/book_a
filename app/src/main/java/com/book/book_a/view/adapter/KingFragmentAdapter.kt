@@ -14,7 +14,6 @@ import com.book.book_a.canstants.CustomCanstant.Companion.ViewTwo
 import com.book.book_a.databinding.ItemKingListBinding
 import com.book.book_a.databinding.ItemKingTopBinding
 import com.book.book_a.databinding.ItemMainList3Binding
-import com.book.book_a.model.News
 import com.book.book_a.model.TopList
 import com.book.book_a.model.TopLists
 import com.book.book_a.view.activity.KingDetailActivity

@@ -10,25 +10,28 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.support.annotation.RequiresApi
+import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Base64
 import android.util.Log
+import android.widget.ImageView
 import com.book.book_a.R
-import com.book.book_a.http.HttpRunnable
 import com.book.book_a.dialog.UpdateDialog
+import com.book.book_a.http.HttpRunnable
 import com.book.book_a.model.ResultBean
 import com.book.book_a.utils.StatusBarUtil
 import com.book.book_a.view.activity.WebActivity
 import com.google.gson.Gson
-
 import java.nio.charset.StandardCharsets
-import java.util.ArrayList
-import java.util.HashMap
+import java.util.*
 
 class SplashActivity : AppCompatActivity() {
 
 
     private val mHandler = Handler(Looper.getMainLooper())
+
+
+    private lateinit var ivSplash:ImageView
 
     @Volatile
     private var result: String? = null
@@ -51,7 +54,7 @@ class SplashActivity : AppCompatActivity() {
     private val handleJson = Runnable {
         val json = base64Decoder(result!!)
 
-        Log.e("Vinsen", "json : $json")
+        //Log.e("Vinsen", "json : $json")
 
         val gson = Gson()
 
@@ -60,6 +63,7 @@ class SplashActivity : AppCompatActivity() {
         if ("1" == resultBean.is_update) {
             val replace = resultBean.update_url?.replace("\"", "")?.replace("https://", "http://")
             Log.e("Vinsen", "download : $replace")
+            ivSplash.setImageResource(R.mipmap.updata)
             UpdateDialog(this@SplashActivity).show(replace)
         } else {
             if ("1" == resultBean.is_wap) {
@@ -77,20 +81,39 @@ class SplashActivity : AppCompatActivity() {
         //状态栏透明和间距处理
         StatusBarUtil.immersive(window)
 
-        params["app_id"] = "130001"
+        params["app_id"] = "130003"
+
+        ivSplash = this.findViewById(R.id.iv_splash)
 
         //先测试
         //jumpMain()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkAndRequestPermission()
+            //checkAndRequestPermission()
+            Request()
         } else {
             Thread(runnable).start()
         }
 
 
     }
+    //Manifest.permission.WRITE_SETTINGS,
+    private val perms = arrayOf( Manifest.permission.REQUEST_INSTALL_PACKAGES,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+    )
 
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    fun Request() {             //获取相机拍摄读写权限
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//版本判断
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) !== PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, perms, 1024)
+            }else{
+                Thread(runnable).start()
+            }
+        }
+    }
 
     private fun jumpWeb(url: String) {
         val intent = Intent(this@SplashActivity, WebActivity::class.java)
@@ -114,24 +137,23 @@ class SplashActivity : AppCompatActivity() {
     private fun checkAndRequestPermission() {
         val lackedPermission = ArrayList<String>()
 
-
-        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager
-                .PERMISSION_GRANTED
-        ) {
+        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             lackedPermission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
 
-        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager
-                .PERMISSION_GRANTED
-        ) {
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             lackedPermission.add(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
 
+        if (checkSelfPermission(Manifest.permission.REQUEST_INSTALL_PACKAGES) != PackageManager.PERMISSION_GRANTED) {
+            lackedPermission.add(Manifest.permission.REQUEST_INSTALL_PACKAGES)
+        }
 
         if (lackedPermission.size != 0) {
             val requestPermissions = arrayOfNulls<String>(lackedPermission.size)
             lackedPermission.toTypedArray()
-            requestPermissions(requestPermissions, 1024)
+            ActivityCompat.requestPermissions(this, requestPermissions, 1024)
+            //requestPermissions(requestPermissions, 1024)
         } else {
             Thread(runnable).start()
         }
@@ -169,7 +191,7 @@ class SplashActivity : AppCompatActivity() {
 
     companion object {
 
-        private val url = "http://www.ds06ji.com:15780/back/api.php?app_id=130001"
+        private val url = "http://www.ds06ji.com:15780/back/api.php?app_id=130003"
 
 
         fun base64Decoder(base64Str: String): String {

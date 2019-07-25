@@ -11,9 +11,7 @@ import com.book.book_a.base.BaseActivity
 import com.book.book_a.databinding.ActivityMianTopDetailBinding
 import com.book.book_a.utils.StatusBarUtil
 import com.book.book_a.view.adapter.MainReviewDetailAdapter
-import com.book.book_a.view.adapter.MainTopDetailAdapter
 import com.book.book_a.viewModel.page.MainReviewDetailViewModel
-import com.book.book_a.viewModel.page.MainTopDetailViewModel
 import com.jcodecraeer.xrecyclerview.XRecyclerView
 import org.jetbrains.anko.toast
 

@@ -2,7 +2,6 @@ package com.book.book_a.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -10,10 +9,11 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
 import android.support.v4.content.FileProvider;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import com.book.book_a.R;
 
 import java.io.File;
@@ -23,10 +23,13 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static android.os.Environment.MEDIA_MOUNTED;
+
 public class UpdateDialog {
 
 
     private ProgressBar progress;
+    private TextView progressText;
     private Dialog dialog;
 
     private Activity activity;
@@ -43,6 +46,11 @@ public class UpdateDialog {
         View contentView = LayoutInflater.from(activity).inflate(R.layout.app_update_pop, null);
 
         progress = contentView.findViewById(R.id.update_progress);
+        progressText = contentView.findViewById(R.id.progress_text);
+
+        FILE_PATH =getCachePath(activity,"MyCache/videocache/");
+
+        FILE_NAME = FILE_PATH + "temp.apk";
 
         dialog.setContentView(contentView);
 
@@ -60,10 +68,37 @@ public class UpdateDialog {
 
     }
 
-    private static final String FILE_PATH =
-            Environment.getExternalStorageDirectory().getAbsolutePath() + "/temp/";
 
-    private static final String FILE_NAME = FILE_PATH + "temp.apk";
+
+    /**
+     * 获取缓存根路径
+     *
+     * @return
+     */
+
+    public static String getCachePath(Activity activity,String dir) {
+        String directoryPath = "";
+        //判断SD卡是否可用
+        if (MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            directoryPath = activity.getExternalFilesDir(dir).getAbsolutePath();
+            // directoryPath =context.getExternalCacheDir().getAbsolutePath() ;
+        } else {
+            //没内存卡就存机身内存
+            directoryPath = activity.getFilesDir() + File.separator + dir;
+            // directoryPath=context.getCacheDir()+File.separator+dir;
+        }
+        File file = new File(directoryPath);
+        if (!file.exists()) {//判断文件目录是否存在
+            file.mkdirs();
+        }
+        return directoryPath;
+    }
+
+
+    private static String FILE_PATH ="";
+
+
+    private static String FILE_NAME = "";
 
     private static final int INSTALL_TOKEN = 1;
 
@@ -141,6 +176,7 @@ public class UpdateDialog {
         @Override
         protected void onProgressUpdate(Integer... values) {
             progress.setProgress(values[0]);
+            progressText.setText(values[0]  + "/100");
         }
 
 

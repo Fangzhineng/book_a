@@ -7,7 +7,7 @@ import android.os.Looper
 import com.book.book_a.R
 import com.book.book_a.canstants.CustomCanstant.Companion.COOKIE
 import com.book.book_a.model.SuccessNoBodyBean
-import com.book.book_a.utils.Preference
+import com.book.book_a.utils.PreferenceUtils
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import okhttp3.*
@@ -41,7 +41,7 @@ class OkHttpUtils private constructor() {
     var cookie: String by CustomDelegate.preference(COOKIE, context, "")
 
     object CustomDelegate{
-        fun <T> preference(key: String, context: Context, default: T) = Preference(key, context, default)
+        fun <T> preference(key: String, context: Context, default: T) = PreferenceUtils(key, context, default)
     }
 
     init {

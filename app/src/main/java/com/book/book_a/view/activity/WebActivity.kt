@@ -9,15 +9,19 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.book.book_a.R
+
+
+
 
 class WebActivity : AppCompatActivity() {
 
+   lateinit var webView :WebView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_web)
+        setContentView(com.book.book_a.R.layout.activity_web)
         val url = intent.getStringExtra("url")
-        val webView = findViewById<WebView>(R.id.web_view)
+        webView = findViewById<WebView>(com.book.book_a.R.id.web_view)
         val webSettings = webView.settings
         webSettings.javaScriptEnabled = true
         webSettings.blockNetworkImage = false
@@ -68,5 +72,13 @@ class WebActivity : AppCompatActivity() {
 
         }
         webView.loadUrl(url)
+    }
+
+    override fun onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

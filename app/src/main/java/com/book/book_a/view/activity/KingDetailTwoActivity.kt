@@ -1,21 +1,15 @@
 package com.book.book_a.view.activity
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.SuperKotlin.pictureviewer.PictureConfig.list
 import com.book.book_a.R
 import com.book.book_a.base.BaseActivity
 import com.book.book_a.databinding.ActivityMianKingDetailTwoBinding
 import com.book.book_a.utils.StatusBarUtil
 import com.book.book_a.view.fragment.KingTabFragment
-import com.book.book_a.viewModel.page.KingDetailViewModel
-import org.jetbrains.anko.toast
 
 class KingDetailTwoActivity : BaseActivity<ActivityMianKingDetailTwoBinding>() {
 

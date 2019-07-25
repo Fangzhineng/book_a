@@ -1,7 +1,6 @@
 package com.book.book_a.viewModel.page
 
 import android.app.Application
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import com.book.book_a.http.RequestParams
 import com.book.book_a.http.ResultCallBack

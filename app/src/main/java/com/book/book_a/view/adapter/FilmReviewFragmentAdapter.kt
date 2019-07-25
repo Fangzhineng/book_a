@@ -9,16 +9,12 @@ import android.view.ViewGroup
 import com.book.book_a.R
 import com.book.book_a.canstants.CustomCanstant.Companion.ViewOne
 import com.book.book_a.canstants.CustomCanstant.Companion.ViewTwo
-import com.book.book_a.databinding.ItemMainList0Binding
-import com.book.book_a.databinding.ItemMainList2Binding
 import com.book.book_a.databinding.ItemMainList3Binding
 import com.book.book_a.databinding.ItemMainList4Binding
 import com.book.book_a.model.Review
 import com.book.book_a.model.ReviewBean
 import com.book.book_a.view.activity.MainReviewDetailActivity
-import com.book.book_a.view.activity.MainTopDetailActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 
 class FilmReviewFragmentAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

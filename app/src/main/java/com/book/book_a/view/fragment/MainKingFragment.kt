@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import com.book.book_a.R
 import com.book.book_a.base.BaseFragment
 import com.book.book_a.databinding.FragmentMainKingBinding
-import com.book.book_a.model.KingBean
 import com.book.book_a.model.TopList
 import com.book.book_a.model.TopLists
 import com.book.book_a.view.adapter.KingFragmentAdapter

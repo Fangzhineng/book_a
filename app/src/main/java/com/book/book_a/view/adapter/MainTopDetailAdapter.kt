@@ -1,6 +1,6 @@
 package com.book.book_a.view.adapter
 
-import android.content.Context
+import android.app.Activity
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -13,29 +13,27 @@ import com.book.book_a.utils.ViewUtils
 import com.book.book_a.witgets.GlideImageLoader
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
-import com.zzhoujay.richtext.RichText
-import com.zzhoujay.richtext.RichType
-import com.zzhoujay.richtext.callback.OnImageClickListener
 
-class MainTopDetailAdapter(val context:Context) : RecyclerView.Adapter<MainTopDetailAdapter.ViewHolder>() {
 
-    private var bean:MainTopDetailBean ? =null
+class MainTopDetailAdapter(val context: Activity) : RecyclerView.Adapter<MainTopDetailAdapter.ViewHolder>() {
 
-    fun set( bean:MainTopDetailBean?){
-        this.bean =bean
+    private var bean: MainTopDetailBean? = null
+
+    fun set(bean: MainTopDetailBean?) {
+        this.bean = bean
         notifyDataSetChanged()
     }
 
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MainTopDetailAdapter.ViewHolder {
-        val binding:ItemMainTopDetialBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_main_top_detial,p0,false)
-        val holder:ViewHolder = ViewHolder(binding.root)
+        val binding: ItemMainTopDetialBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_main_top_detial, p0, false)
+        val holder: ViewHolder = ViewHolder(binding.root)
         holder.binding = binding
         return holder
     }
 
     override fun getItemCount(): Int {
-        return  1
+        return 1
     }
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
@@ -46,20 +44,14 @@ class MainTopDetailAdapter(val context:Context) : RecyclerView.Adapter<MainTopDe
             holder.binding.tvComment.text = "评论:" + bean?.commentCount
             if (bean?.content!!.isNotEmpty()) {
                 ViewUtils().fromText(context, bean?.content!!, holder.binding.tvContent)
-//                RichText.from(bean?.content!!).type(RichType.html).clickable(true) // 是否可点击，默认只有设置了点击监听才可点击
-//                        .imageClick(object :OnImageClickListener{
-//                            override fun imageClicked(imageUrls: List<String>?, position: Int) {
-//                                ViewUtils().jupActivity(context,position,imageUrls)
-//                            }
-//                        }).into(holder.binding.tvContent)
             }
 
-            if (bean?.images != null){
+            if (bean?.images != null) {
                 holder.binding.banner.visibility = View.VISIBLE
 
                 var imageArray = arrayListOf<String>()
 
-                for (index in bean!!.images){
+                for (index in bean!!.images) {
                     imageArray.add(index.url1)
                 }
                 //设置banner样式
@@ -76,7 +68,7 @@ class MainTopDetailAdapter(val context:Context) : RecyclerView.Adapter<MainTopDe
                 holder.binding.banner.setIndicatorGravity(BannerConfig.CENTER)
                 //banner设置方法全部调用完毕时最后调用
                 holder.binding.banner.start()
-            }else{
+            } else {
                 holder.binding.banner.visibility = View.GONE
             }
 
@@ -84,7 +76,7 @@ class MainTopDetailAdapter(val context:Context) : RecyclerView.Adapter<MainTopDe
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        lateinit var binding:ItemMainTopDetialBinding
+        lateinit var binding: ItemMainTopDetialBinding
     }
 
 }

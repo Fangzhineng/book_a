@@ -8,7 +8,7 @@ import com.book.book_a.application.App
 import kotlin.reflect.KProperty
 
 
-class Preference<T>(private val key: String, val context: Context, private val default: T) {
+class PreferenceUtils<T>(private val key: String, val context: Context, private val default: T) {
 
     private val prefs: SharedPreferences by lazy { App.Instance.applicationContext.getSharedPreferences("wocai_sp", Context.MODE_PRIVATE) }
 

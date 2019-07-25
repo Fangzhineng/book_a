@@ -5,7 +5,6 @@ import android.arch.lifecycle.MutableLiveData
 import com.book.book_a.http.RequestParams
 import com.book.book_a.http.ResultCallBack
 import com.book.book_a.model.MainReviewDetailBean
-import com.book.book_a.model.MainTopDetailBean
 import com.book.book_a.viewModel.BaseViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

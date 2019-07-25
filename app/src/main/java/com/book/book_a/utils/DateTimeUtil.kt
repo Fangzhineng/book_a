@@ -1,14 +1,8 @@
 package com.book.book_a.utils
 
 import android.annotation.SuppressLint
-import com.book.book_a.canstants.CustomCanstant.Companion.DF_YYYY_MM_DD_HH_MM_SS
-import com.book.book_a.canstants.CustomCanstant.Companion.DF_YYYY_MM_DD_HH_MM_SS_2
 
-import java.text.DateFormat
-import java.text.ParseException
-import java.text.ParsePosition
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
 
 

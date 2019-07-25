@@ -1,21 +1,17 @@
 package com.book.book_a.utils
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import android.widget.TextView
-import com.book.book_a.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import me.wcy.htmltext.HtmlImageLoader
 import me.wcy.htmltext.HtmlText
 import me.wcy.htmltext.OnTagClickListener
-import com.SuperKotlin.pictureviewer.ImagePagerActivity
-import com.SuperKotlin.pictureviewer.PictureConfig
 
 
 class ViewUtils {
@@ -38,7 +34,7 @@ class ViewUtils {
                  }
 
                  override fun getErrorDrawable(): Drawable? {
-                    return ContextCompat.getDrawable(context, R.mipmap.error_icon)
+                    return ContextCompat.getDrawable(context, com.book.book_a.R.mipmap.error_icon)
                  }
 
                  override fun getMaxWidth(): Int {
@@ -51,9 +47,9 @@ class ViewUtils {
               })
               .setOnTagClickListener(object : OnTagClickListener {
                  override//  图片的点击事件
-                 fun onImageClick(context: Context, imageUrlList: List<String>, position: Int) {
+                 fun onImageClick(context: Context?, imageUrlList: MutableList<String>?, position: Int) {
                     // 显示图片
-                    jupActivity(context,position, imageUrlList)
+                    //jupActivity(context,position, imageUrlList)
                  }
 
                  override// 超链接点击事件
@@ -66,17 +62,17 @@ class ViewUtils {
    }
 
 
-   fun jupActivity(context:Context,position: Int, list: List<String>?) {
+   fun jupActivity(context:Activity,position: Int, list: MutableList<String>) {
       // 图片查看器
-      val picture = PictureConfig.Builder()
-              .setListData(list as ArrayList<String>)
-              .setPosition(position)
-              .setIsShowNumber(true)
-              .setDownloadPath("PIC")
-              .needDownload(true)// 是否支持图下载
-              .setPlacrHolder(R.mipmap.loading)// 占位符
-              .build()
-      ImagePagerActivity.startActivity(context, picture)
+//      val picture = PictureConfig.Builder()
+//              .setListData(list as ArrayList<String>?)
+//              .setPosition(0)
+//              .setIsShowNumber(true)
+//              .setDownloadPath("pictureviewer")
+//              .needDownload(false)// 是否支持图下载
+//              .setPlacrHolder(com.book.book_a.R.mipmap.loading)// 占位符
+//              .build()
+//      ImagePagerActivity.startActivity(context, picture)
    }
 
 
